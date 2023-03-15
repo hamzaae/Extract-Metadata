@@ -71,12 +71,12 @@ public class MetaDataExtractor {
                 marshaller.marshal(metaDataObj, file_xml);
         }
 
-        public static void main(String[] args) throws IOException, SAXException, TikaException, JAXBException {
+        /*public static void main(String[] args) throws IOException, SAXException, TikaException, JAXBException {
 
                 MetaDataExtractor metaDataExtractor = new MetaDataExtractor();
                 metaDataExtractor.setInput("C:\\Users\\Microsoft\\Downloads\\WhatsApp Image 2023-01-02 at 12.38.19.jpeg");
                 metaDataExtractor.setOutput("src\\main\\resources\\metadata.xml");
                 MetaData metaDataObj = metaDataExtractor.extractMetaData();
-                metaDataExtractor.marshall(metaDataObj);
+                metaDataExtractor.marshall(metaDataObj);*/
         }
 }
