@@ -25,19 +25,15 @@ public class MetaDataExtractor {
         private String input;
         private String output;
 
-        @WebMethod
         public String getInput() {
                 return input;
         }
-        @WebMethod
         public void setInput(String input) {
                 this.input = input;
         }
-        @WebMethod
         public String getOutput() {
                 return output;
         }
-        @WebMethod
         public void setOutput(String output) {
                 this.output = output;
         }
@@ -65,6 +61,7 @@ public class MetaDataExtractor {
                 JAXBContext jaxbContext = JAXBContext.newInstance(MetaData.class);
 
                 Marshaller marshaller = jaxbContext.createMarshaller();
+                marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
                 File file_xml = new File(this.output);
 
@@ -77,6 +74,6 @@ public class MetaDataExtractor {
                 metaDataExtractor.setInput("C:\\Users\\Microsoft\\Downloads\\WhatsApp Image 2023-01-02 at 12.38.19.jpeg");
                 metaDataExtractor.setOutput("src\\main\\resources\\metadata.xml");
                 MetaData metaDataObj = metaDataExtractor.extractMetaData();
-                metaDataExtractor.marshall(metaDataObj);*/
-        }
+                metaDataExtractor.marshall(metaDataObj);
+        }*/
 }
