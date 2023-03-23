@@ -1,9 +1,10 @@
 package service;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 
-@XmlRootElement
-public class MetaData {
+@XmlRootElement(name = "metaData")
+public class MetaData implements Serializable {
     private String title;
     private String author;
     private String date;

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 //import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 //import java.nio.file.Path;
 
 import org.apache.tika.exception.TikaException;
@@ -25,22 +26,40 @@ public class MetaDataExtractor {
         private String input;
         private String output;
 
-        public String getInput() {
-                return input;
-        }
         public void setInput(String input) {
                 this.input = input;
         }
-        public String getOutput() {
-                return output;
-        }
+
         public void setOutput(String output) {
                 this.output = output;
         }
+        public void itterateFolder(String folderPath) throws TikaException, IOException, SAXException, JAXBException {
+                File folder = new File(folderPath);
+                File[] files = folder.listFiles();
+                File file_xml = new File(this.output);
+
+                //iterate the files array
+                assert files != null;
+                //ArrayList<MetaData> filesM= new ArrayList<>();
+                MetaDatas folderr = new MetaDatas();
+                for(File file:files) {
+                        //check if the file
+                        if(file.isFile()) {
+                                System.out.println("File - "+file.getName());
+                                MetaData metaDataObj = extractMetaData(file.getPath());
+                                folderr.addMetadata(metaDataObj);
+
+                        }else
+                        if(file.isDirectory()) {
+                                System.out.println("Folder - "+file.getName());
+                        }
+                }
+                marshall(folderr, file_xml);
+        }
         @WebMethod
-        public MetaData extractMetaData() throws IOException, TikaException, SAXException {
+        public MetaData extractMetaData(String filePath) throws IOException, TikaException, SAXException {
                 // Create a new file object
-                File file = new File(this.input);
+                File file = new File(filePath);
                 // Create a parser object
                 Parser parser = new AutoDetectParser();
                 // Create a metadata object to hold the extracted metadata
@@ -56,24 +75,24 @@ public class MetaDataExtractor {
                 return metadataObj;
         }
         @WebMethod
-        public void marshall(MetaData metaDataObj) throws JAXBException {
+        public void marshall(MetaDatas folderr, File xmlFile) throws JAXBException {
                 // Marshalling
-                JAXBContext jaxbContext = JAXBContext.newInstance(MetaData.class);
+                JAXBContext jaxbContext = JAXBContext.newInstance(MetaDatas.class);
 
                 Marshaller marshaller = jaxbContext.createMarshaller();
                 marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
-                File file_xml = new File(this.output);
+                marshaller.marshal(folderr, xmlFile);
 
-                marshaller.marshal(metaDataObj, file_xml);
         }
 
-        /*public static void main(String[] args) throws IOException, SAXException, TikaException, JAXBException {
+        public static void main(String[] args) throws IOException, SAXException, TikaException, JAXBException {
 
                 MetaDataExtractor metaDataExtractor = new MetaDataExtractor();
-                metaDataExtractor.setInput("C:\\Users\\Microsoft\\Downloads\\WhatsApp Image 2023-01-02 at 12.38.19.jpeg");
+                metaDataExtractor.setInput("C:\\Users\\Microsoft\\Desktop\\test");
                 metaDataExtractor.setOutput("src\\main\\resources\\metadata.xml");
-                MetaData metaDataObj = metaDataExtractor.extractMetaData();
-                metaDataExtractor.marshall(metaDataObj);
-        }*/
+                metaDataExtractor.itterateFolder(metaDataExtractor.input);
+                //MetaData metaDataObj = metaDataExtractor.extractMetaData();
+                //metaDataExtractor.marshall(metaDataObj);
+        }
 }
