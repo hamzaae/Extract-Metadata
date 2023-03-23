@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
-@XmlRootElement(name = "metadatas")
+@XmlRootElement(name = "folder")
 public class MetaDatas {
     private ArrayList<MetaData> folder = new ArrayList<>();
 

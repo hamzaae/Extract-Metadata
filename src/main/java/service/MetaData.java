@@ -1,17 +1,22 @@
 package service;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 import java.io.Serializable;
 
-@XmlRootElement(name = "metaData")
+@XmlType(propOrder={"name","title","author","date","type"})
+@XmlRootElement(name = "file")
 public class MetaData implements Serializable {
+    private String name;
     private String title;
     private String author;
     private String date;
     private String type;
 
     // getters, and setters
-    public String getTitle() {
+    public String getName() {
+        return name;
+    }public String getTitle() {
         return title;
     }
     public String getAuthor() {
@@ -22,6 +27,9 @@ public class MetaData implements Serializable {
     }
     public String getType() {
         return type;
+    }
+    public void setName(String name) {
+        this.name = name;
     }
     public void setTitle(String title) {
         this.title = title;

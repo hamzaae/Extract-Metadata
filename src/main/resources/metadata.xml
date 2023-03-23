@@ -1,14 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<metadatas>
+<folder>
     <metaDatas>
+        <name>CourseFiles-20230307T211751Z-001.zip</name>
+        <type>application/zip</type>
+    </metaDatas>
+    <metaDatas>
+        <name>heartPTD.xlsx</name>
         <author>Maison</author>
         <date>2017-10-30T14:46:16Z</date>
         <type>application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</type>
     </metaDatas>
     <metaDatas>
+        <name>ID1FS.docx</name>
+        <author>MOHAMMED AJBILOU</author>
+        <date>2023-01-09T15:34:00Z</date>
+        <type>application/vnd.openxmlformats-officedocument.wordprocessingml.document</type>
+    </metaDatas>
+    <metaDatas>
+        <name>Inf.SIAD.05-21.pdf</name>
+        <title>Chapitre II</title>
         <author>Année universitaire : 2020\2021</author>
         <date>2021-06-26T16:42:39Z</date>
-        <title>Chapitre II</title>
         <type>application/pdf</type>
     </metaDatas>
-</metadatas>
+    <metaDatas>
+        <name>logo-ensah.png</name>
+        <type>image/png</type>
+    </metaDatas>
+    <metaDatas>
+        <name>tp3 java.pdf</name>
+        <author>Hp</author>
+        <date>2023-03-17T17:53:14Z</date>
+        <type>application/pdf</type>
+    </metaDatas>
+</folder>

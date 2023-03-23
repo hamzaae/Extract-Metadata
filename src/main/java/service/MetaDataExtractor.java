@@ -48,7 +48,6 @@ public class MetaDataExtractor {
                                 System.out.println("File - "+file.getName());
                                 MetaData metaDataObj = extractMetaData(file.getPath());
                                 folderr.addMetadata(metaDataObj);
-
                         }else
                         if(file.isDirectory()) {
                                 System.out.println("Folder - "+file.getName());
@@ -68,6 +67,7 @@ public class MetaDataExtractor {
                 // Create a new instance of the Metadata class
                 MetaData metadataObj = new MetaData();
                 // Set the extracted metadata values in the Metadata object
+                metadataObj.setName(file.getName());
                 metadataObj.setTitle(metadata.get("title"));
                 metadataObj.setAuthor(metadata.get("Author"));
                 metadataObj.setDate(metadata.get("date"));
@@ -92,7 +92,6 @@ public class MetaDataExtractor {
                 metaDataExtractor.setInput("C:\\Users\\Microsoft\\Desktop\\test");
                 metaDataExtractor.setOutput("src\\main\\resources\\metadata.xml");
                 metaDataExtractor.itterateFolder(metaDataExtractor.input);
-                //MetaData metaDataObj = metaDataExtractor.extractMetaData();
-                //metaDataExtractor.marshall(metaDataObj);
+
         }
 }
